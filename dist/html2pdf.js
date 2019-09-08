@@ -334,7 +334,9 @@ Worker.prototype.toPdf = function toPdf() {
       var h = pageCanvas.height;
       pageCtx.fillStyle = 'white';
       pageCtx.fillRect(0, 0, w, h);
-      pageCtx.drawImage(canvas, 0, page * pxPageHeight, w, h, 0, 0, w, h);
+      var marginTopPage2 = 0;
+      if (page > 0) marginTopPage2 = 56.639;
+      pageCtx.drawImage(canvas, 0, page * pxPageHeight, w, h, 0, marginTopPage2, w, h);
 
       // Add the page to the PDF.
       if (page) this.prop.pdf.addPage();
